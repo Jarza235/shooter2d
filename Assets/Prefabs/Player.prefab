@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114750473903204506}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -187,6 +187,8 @@ MonoBehaviour:
   BulletSpread: 5
   maxAmmo: 100
   reloadTime: 4
+  emptyReloadBar: {fileID: 0}
+  fullReloadBar: {fileID: 0}
   firePoint: {fileID: 4149694117248600}
 --- !u!135 &135087457265564874
 SphereCollider:

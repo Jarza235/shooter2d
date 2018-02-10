@@ -1,16 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerBehaviour : MonoBehaviour {
 
     private float speed = 0.2f;
 
+    public int health;
+    public int maxHealth;
+    public Text currentHealth;
+    [HideInInspector] public bool damageTrigger;
+    
     public GunController theGun;
 
-	// Use this for initialization
-	void Start () {
-		
+    // Use this for initialization
+    void Start ()
+    {
+        health = maxHealth;
 	}
 	
 	// Update is called once per frame
@@ -67,5 +74,7 @@ public class PlayerBehaviour : MonoBehaviour {
         {
             theGun.isFiring = false;
         }
+
+        currentHealth.text = ("Life: " + health);
     }
 }

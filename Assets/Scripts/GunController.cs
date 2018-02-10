@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GunController : MonoBehaviour {
 
-    public bool isFiring;
+    [HideInInspector]public bool isFiring;
 
     public BulletController bullet;
     public float bulletSpeed; // Declares the speed of the bullet
@@ -20,9 +20,9 @@ public class GunController : MonoBehaviour {
     public int maxAmmo; // How many bullets a magazine has
     private int currentAmmo; // How many bullets you have left from a magazine
     public float reloadTime; // How long time it takes to reload the gun
-    private bool isReloading = false;
+    [HideInInspector]public bool isReloading = false;
 
-    public Transform firePoint; 
+    public Transform firePoint;
 
     void Start ()
     {
@@ -60,15 +60,13 @@ public class GunController : MonoBehaviour {
             StartCoroutine(Reload());
             return;
         }
-	}
+    }
 
     IEnumerator Reload() // Declares what happens when you are reloading. Player reloads gun to full ammo.
     {
         isReloading = true;
-        Debug.Log("Reloading..." + reloadTime + "sec");
         yield return new WaitForSeconds(reloadTime);
         currentAmmo = maxAmmo;
         isReloading = false;
-        Debug.Log("Reload done!");
     }
 }
