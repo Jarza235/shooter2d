@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0f5a0993fe6ff4bb78f3612f0e36f455
-timeCreated: 1518039201
+timeCreated: 1518270651
 licenseType: Pro
 ModelImporter:
   serializedVersion: 22
@@ -13,9 +13,6 @@ ModelImporter:
     400002: group_0_16089887
     400004: group_0_4634441
     400006: //RootNode
-    2100000: group_0_15277357Mat
-    2100002: group_0_16089887Mat
-    2100004: group_0_4634441Mat
     2300000: group_0_15277357
     2300002: group_0_16089887
     2300004: group_0_4634441
@@ -29,13 +26,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: group_0_15277357Mat
+    second: {fileID: 2100000, guid: 00a343d1329a2457499a031571dbd52f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: group_0_16089887Mat
+    second: {fileID: 2100000, guid: 6a606062dd7dc45949eaa762a18c3058, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: group_0_4634441Mat
-    second: {fileID: 2100000, guid: 5fd2854caa69245bba2a4262a7e77258, type: 2}
+    second: {fileID: 2100000, guid: cb0bf61bfab66453195a22818ea6ef3a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -67,14 +74,12 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
-    swapUVChannels: 1
-    generateSecondaryUV: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
-    preserveHierarchy: 0
-    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
