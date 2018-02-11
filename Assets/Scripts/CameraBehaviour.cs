@@ -5,15 +5,19 @@ using UnityEngine;
 public class CameraBehaviour : MonoBehaviour {
 
     public GameObject player;
+	public GameObject car;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+	public bool followPlayer;
+	public bool followCar;
 	
 	// Update is called once per frame
 	void Update () {
-        // Move the camera X & Y with the player
-        transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
+		if(followPlayer) {
+			// Move the camera X & Y with the player
+			transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
+		}
+		else if(followCar) {
+			transform.position = new Vector3(car.transform.position.x, car.transform.position.y, transform.position.z);
+		}
 	}
 }
