@@ -54,7 +54,7 @@
         public void FixedUpdate()
         {
 			// Downforce
-			rb.AddForce(new Vector3(0f, 0f, 1f) * downForce);
+			rb.AddForce(new Vector3(0f, -1f, 0) * downForce);
 
             if (controlled)
             {

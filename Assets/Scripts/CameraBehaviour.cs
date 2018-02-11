@@ -17,7 +17,7 @@ public class CameraBehaviour : MonoBehaviour {
 			transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
 		}
 		else if(followCar) {
-			transform.position = new Vector3(car.transform.position.x, car.transform.position.y, transform.position.z);
+			transform.position = new Vector3(car.transform.position.x, car.transform.position.y + 10f, car.transform.position.z);
 		}
 	}
 }

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class UVMapper : MonoBehaviour {
 
+	public bool x;
+	public bool y;
+	public bool z;
+
 	void Start()
 	{
 		Mesh mesh = GetComponent<MeshFilter>().mesh;
@@ -12,7 +16,12 @@ public class UVMapper : MonoBehaviour {
 
 		for (int i = 0; i < uvs.Length; i++)
 		{
-			uvs[i] = new Vector2(vertices[i].x, vertices[i].y);
+			if(x && y)
+				uvs[i] = new Vector2(vertices[i].x, vertices[i].y);
+			else if(x && z)
+				uvs[i] = new Vector2(vertices[i].x, vertices[i].z);
+			else if(y && z)
+				uvs[i] = new Vector2(vertices[i].y, vertices[i].z);
 		}
 		mesh.uv = uvs;
 	}

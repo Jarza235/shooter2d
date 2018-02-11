@@ -1,23 +1,23 @@
 fileFormatVersion: 2
-guid: 4d551e63e133d49ae9804a16584e6c75
-timeCreated: 1518381853
+guid: 4b71e15b61d5745ce9d68b55893e867c
+timeCreated: 1518380729
 licenseType: Pro
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: group_0_undefined
+    100000: group_0_16089887
     100002: //RootNode
-    400000: group_0_undefined
+    400000: group_0_16089887
     400002: //RootNode
-    2300000: group_0_undefined
-    3300000: group_0_undefined
-    4300000: group_0_undefined
+    2300000: group_0_16089887
+    3300000: group_0_16089887
+    4300000: group_0_16089887
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: group_0_undefinedMat
-    second: {fileID: 2100000, guid: 391ec7878058741f58961d5c1b850b6d, type: 2}
+      name: group_0_16089887Mat
+    second: {fileID: 2100000, guid: 6a606062dd7dc45949eaa762a18c3058, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
