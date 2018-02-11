@@ -7,17 +7,24 @@ public class PlayerBehaviour : MonoBehaviour {
 
     private float speed = 0.2f;
 
-    public int health;
-    public int maxHealth;
-    public Text currentHealth;
-    [HideInInspector] public bool damageTrigger;
-    
+    public int health;  // Player's current health.
+    public int maxHealth; // Player's max health.
+    public Text currentHealth; // Show player's current health by text.
+
+    public int armor; // Player's current armor.
+    public int maxArmor; // Player's max armor.
+    public Text currentArmor; // Show current armor by text
+
+    [HideInInspector] public bool damageTrigger; // True if player is currently losing health.
+
+
     public GunController theGun;
 
     // Use this for initialization
     void Start ()
     {
-        health = maxHealth;
+        health = maxHealth; // Player starts with full health.
+        armor = maxArmor; // Player starts with full armor.
 	}
 	
 	// Update is called once per frame
@@ -75,6 +82,7 @@ public class PlayerBehaviour : MonoBehaviour {
             theGun.isFiring = false;
         }
 
-        currentHealth.text = ("Life: " + health);
+        currentHealth.text = ("Life: " + health); // Shows player's current health.
+        currentArmor.text = ("Armor: " + armor); // Shows player's current armor.
     }
 }

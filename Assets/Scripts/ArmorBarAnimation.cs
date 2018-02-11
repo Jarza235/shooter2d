@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthBarAnimation : MonoBehaviour
+public class ArmorBarAnimation : MonoBehaviour
 {
     private PlayerBehaviour PB;
     private DamageCube DC;
 
-    Vector3 healthBarWidth;
+    Vector3 armorBarWidth;
 
     void Start()
     {
@@ -18,11 +18,11 @@ public class HealthBarAnimation : MonoBehaviour
 
     void Update()
     {
-        if (PB.damageTrigger && PB.armor <= 0 && PB.health >0) 
+        if (PB.damageTrigger && PB.armor > 0)
         {
-            healthBarWidth = transform.localScale;
-            healthBarWidth.x -= (0.015f*DC.dealDamage); // Only works right if game is running 60fps
-            transform.localScale = healthBarWidth;
+            armorBarWidth = transform.localScale;
+            armorBarWidth.x -= (0.015f * DC.dealDamage); // Only works right if game is running 60fps
+            transform.localScale = armorBarWidth;
         }
     }
 }
