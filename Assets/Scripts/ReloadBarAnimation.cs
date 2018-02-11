@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class ReloadBarAnimation : MonoBehaviour
 {
     private GunController GC;
-    //public Image reloadBar;
     
     Vector3 reloadBarWidth;
 

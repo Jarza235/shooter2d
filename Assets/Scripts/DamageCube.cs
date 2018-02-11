@@ -6,8 +6,7 @@ public class DamageCube : MonoBehaviour
 {
     private PlayerBehaviour PB;
 
-    public int dealDamage;
-    //[HideInInspector]public bool damageTrigger;
+    public int dealDamage; // Damage dealt to the player.
 
     void Start ()
     {
@@ -18,7 +17,15 @@ public class DamageCube : MonoBehaviour
     {
         if (PB.damageTrigger)
         {
-            PB.health -= dealDamage;
+            if(PB.armor > 0)
+            {
+                PB.armor -= dealDamage;
+            }
+
+            else if(PB.armor <= 0 && PB.health >0)
+            {
+                PB.health -= dealDamage;
+            }
         }
     }
 
