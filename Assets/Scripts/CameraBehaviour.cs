@@ -10,10 +10,18 @@ public class CameraBehaviour : MonoBehaviour {
 	public bool followPlayer;
 	public bool followCar;
 
+	public bool useThirdPersonCamera;
+	private float offsetZ;
+
 	private Rigidbody carRb;
 
 	void Start() {
 		carRb = car.GetComponent<Rigidbody>();
+
+		if(useThirdPersonCamera) {
+			transform.eulerAngles = new Vector3(40f, 0f, 0f);
+			offsetZ = 10f;
+		}
 	}
 	
 	// Update is called once per frame
@@ -23,7 +31,7 @@ public class CameraBehaviour : MonoBehaviour {
 			transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 5f, player.transform.position.z);
 		}
 		else if(followCar) {
-			transform.position = new Vector3(car.transform.position.x, car.transform.position.y + 5f + Mathf.Min(carRb.velocity.magnitude, 15f), car.transform.position.z);
+			transform.position = new Vector3(car.transform.position.x, car.transform.position.y + 5f + Mathf.Min(carRb.velocity.magnitude, 15f), car.transform.position.z - offsetZ);
 		}
 	}
 }
