@@ -20,8 +20,45 @@ public class PlayerBehaviour : MonoBehaviour {
 
     [HideInInspector] public bool damageTrigger; // True if player is currently losing health.
 
-
     public GunController theGun;
+
+    
+    // yesRotationAnimation [kaikki alapuolella]
+
+    public float velocity = 5;
+    public float turnSpeed = 10;
+
+    Vector2 input;
+    float angle;
+
+    Quaternion targetRotation;
+
+    void GetInput()
+    {
+        input.x = Input.GetAxisRaw("Horizontal");
+        input.y = Input.GetAxisRaw("Vertical");
+    }
+
+    void CalculateDirection()
+    {
+        angle = Mathf.Atan2(input.x, input.y);
+        angle = Mathf.Rad2Deg * angle;
+        // Kamera ei messissä
+    }
+
+    void Rotate()
+    {
+        targetRotation = Quaternion.Euler(90, angle, 90);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
+    }
+
+    void Move()
+    {
+        transform.position += transform.right * velocity * Time.deltaTime;
+    }
+
+    // yesRotationAnimation [kaikki yläpuolella]
+    
 
     // Use this for initialization
     void Start ()
@@ -35,6 +72,28 @@ public class PlayerBehaviour : MonoBehaviour {
     {
         if(health > 0) // Player can't move or shoot if he's dead
         {
+            if (Input.GetMouseButtonDown(0))
+            {
+                theGun.isFiring = true;
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                theGun.isFiring = false;
+            }
+
+            if (Input.GetKey(KeyCode.K)) // Inflict damage by pressing K
+            {
+                if (armor > 0)
+                {
+                    armor--;
+                }
+
+                if (armor <= 0 && health > 0)
+                {
+                    health--;
+                }
+            }
+
             if (noRotationAnimation)
             {
                 // Move player with WASD
@@ -86,28 +145,13 @@ public class PlayerBehaviour : MonoBehaviour {
 
             if (yesRotationAnimation)
             {
+                GetInput();
 
-            }
-
-            if (Input.GetMouseButtonDown(0))
-            {
-                theGun.isFiring = true;
-            }
-            if (Input.GetMouseButtonUp(0))
-            {
-                theGun.isFiring = false;
-            }
-
-            if (Input.GetKey(KeyCode.K)) // Inflict damage by pressing K
-            {
-                if (armor > 0)
+                if (Mathf.Abs(input.x) < 1 && Mathf.Abs(input.y) < 1) return;
                 {
-                    armor--;
-                }
-
-                if (armor <= 0 && health > 0)
-                {
-                    health--;
+                    CalculateDirection();
+                    Rotate();
+                    Move();
                 }
             }
         }
