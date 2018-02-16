@@ -67,7 +67,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1fe4f6e9ddb3e141a27a4f37f85855e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reloadBarEmpty: {fileID: 114575250092825656}
 --- !u!222 &222055749279878376
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -89,6 +88,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 625, y: 75.237854}
+  m_AnchoredPosition: {x: 350, y: 75}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0.5}
