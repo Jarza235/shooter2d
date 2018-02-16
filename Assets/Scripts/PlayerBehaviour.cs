@@ -32,44 +32,46 @@ public class PlayerBehaviour : MonoBehaviour {
         // Move player with WASD
 		if(Input.GetKey(KeyCode.W))
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y + speed, transform.position.z);
-            transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
+            //transform.position = new Vector3(transform.position.x, transform.position.y + speed, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z+speed);
+            transform.rotation = Quaternion.Euler(90.0f, 270.0f, 0.0f); // x,y,z
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y - speed, transform.position.z);
-            transform.rotation = Quaternion.Euler(0.0f, 0.0f, 270.0f);
+            //transform.position = new Vector3(transform.position.x, transform.position.y - speed, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - speed);
+            transform.rotation = Quaternion.Euler(90.0f, 90.0f, 0.0f);
         }
         if (Input.GetKey(KeyCode.D))
         {
             transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
-            transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            transform.rotation = Quaternion.Euler(90.0f, 0.0f, 0.0f);
 
             if (Input.GetKey(KeyCode.S))
             {
                 //transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
-                transform.rotation = Quaternion.Euler(0.0f, 0.0f, 315.0f);
+                transform.rotation = Quaternion.Euler(90.0f, 45.0f, 0.0f);
             }
             if (Input.GetKey(KeyCode.W))
             {
                 //transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
-                transform.rotation = Quaternion.Euler(0.0f, 0.0f, 45.0f);
+                transform.rotation = Quaternion.Euler(90.0f, 315.0f, 0.0f);
             }
         }
         if (Input.GetKey(KeyCode.A))
         {
             transform.position = new Vector3(transform.position.x - speed, transform.position.y, transform.position.z);
-            transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
+            transform.rotation = Quaternion.Euler(90.0f, 180.0f, 0.0f);
 
             if (Input.GetKey(KeyCode.S))
             {
                 //transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
-                transform.rotation = Quaternion.Euler(0.0f, 0.0f, 225.0f);
+                transform.rotation = Quaternion.Euler(90.0f, 135.0f, 0.0f);
             }
             if (Input.GetKey(KeyCode.W))
             {
                 //transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
-                transform.rotation = Quaternion.Euler(0.0f, 0.0f, 135.0f);
+                transform.rotation = Quaternion.Euler(90.0f, 225.0f, 0.0f);
             }
         }
 
