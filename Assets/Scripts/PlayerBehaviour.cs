@@ -28,60 +28,77 @@ public class PlayerBehaviour : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        // Move player with WASD
-		if(Input.GetKey(KeyCode.W))
+	void Update ()
+    {
+        if(health > 0) // Player can't move or shoot if he's dead
         {
-            //transform.position = new Vector3(transform.position.x, transform.position.y + speed, transform.position.z);
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z+speed);
-            transform.rotation = Quaternion.Euler(90.0f, 270.0f, 0.0f); // x,y,z
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            //transform.position = new Vector3(transform.position.x, transform.position.y - speed, transform.position.z);
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - speed);
-            transform.rotation = Quaternion.Euler(90.0f, 90.0f, 0.0f);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
-            transform.rotation = Quaternion.Euler(90.0f, 0.0f, 0.0f);
-
-            if (Input.GetKey(KeyCode.S))
-            {
-                //transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
-                transform.rotation = Quaternion.Euler(90.0f, 45.0f, 0.0f);
-            }
+            // Move player with WASD
             if (Input.GetKey(KeyCode.W))
             {
-                //transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
-                transform.rotation = Quaternion.Euler(90.0f, 315.0f, 0.0f);
+                //transform.position = new Vector3(transform.position.x, transform.position.y + speed, transform.position.z);
+                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + speed);
+                transform.rotation = Quaternion.Euler(90.0f, 270.0f, 0.0f); // x,y,z
             }
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.position = new Vector3(transform.position.x - speed, transform.position.y, transform.position.z);
-            transform.rotation = Quaternion.Euler(90.0f, 180.0f, 0.0f);
-
             if (Input.GetKey(KeyCode.S))
             {
-                //transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
-                transform.rotation = Quaternion.Euler(90.0f, 135.0f, 0.0f);
+                //transform.position = new Vector3(transform.position.x, transform.position.y - speed, transform.position.z);
+                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - speed);
+                transform.rotation = Quaternion.Euler(90.0f, 90.0f, 0.0f);
             }
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.D))
             {
-                //transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
-                transform.rotation = Quaternion.Euler(90.0f, 225.0f, 0.0f);
-            }
-        }
+                transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
+                transform.rotation = Quaternion.Euler(90.0f, 0.0f, 0.0f);
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            theGun.isFiring = true;
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            theGun.isFiring = false;
+                if (Input.GetKey(KeyCode.S))
+                {
+                    //transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
+                    transform.rotation = Quaternion.Euler(90.0f, 45.0f, 0.0f);
+                }
+                if (Input.GetKey(KeyCode.W))
+                {
+                    //transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
+                    transform.rotation = Quaternion.Euler(90.0f, 315.0f, 0.0f);
+                }
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.position = new Vector3(transform.position.x - speed, transform.position.y, transform.position.z);
+                transform.rotation = Quaternion.Euler(90.0f, 180.0f, 0.0f);
+
+                if (Input.GetKey(KeyCode.S))
+                {
+                    //transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
+                    transform.rotation = Quaternion.Euler(90.0f, 135.0f, 0.0f);
+                }
+                if (Input.GetKey(KeyCode.W))
+                {
+                    //transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
+                    transform.rotation = Quaternion.Euler(90.0f, 225.0f, 0.0f);
+                }
+            }
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                theGun.isFiring = true;
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                theGun.isFiring = false;
+            }
+
+            if (Input.GetKey(KeyCode.K)) // Inflict damage by pressing K
+            {
+                if (armor > 0)
+                {
+                    armor--;
+                }
+
+                if (armor <= 0 && health > 0)
+                {
+                    health--;
+                }
+            }
         }
 
         currentHealth.text = ("Life: " + health); // Shows player's current health.
