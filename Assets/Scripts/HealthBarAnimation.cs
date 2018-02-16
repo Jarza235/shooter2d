@@ -18,10 +18,10 @@ public class HealthBarAnimation : MonoBehaviour
 
     void Update()
     {
-        if (PB.damageTrigger && PB.armor <= 0 && PB.health >0) 
+        if (PB.armor <= 0 && PB.health >= 0)
         {
             healthBarWidth = transform.localScale;
-            healthBarWidth.x -= (0.015f*DC.dealDamage); // Only works right if game is running 60fps
+            healthBarWidth.x = (1.5f / PB.maxHealth * PB.health); // Maybe only works right if game is running 60fps
             transform.localScale = healthBarWidth;
         }
     }

@@ -15,6 +15,6 @@ public class BulletController : MonoBehaviour {
     {
         transform.Translate(Vector3.right * bulletSpeed * Time.deltaTime);
 
-        Object.Destroy(gameObject, 2.0f); // Destroys bullet after 2 sec
+        Object.Destroy(gameObject, 1.0f); // Destroys bullet after 1 sec
     }
 }

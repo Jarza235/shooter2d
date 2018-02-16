@@ -18,10 +18,17 @@ public class ArmorBarAnimation : MonoBehaviour
 
     void Update()
     {
-        if (PB.damageTrigger && PB.armor > 0)
+        if (PB.armor > 0)
         {
             armorBarWidth = transform.localScale;
-            armorBarWidth.x -= (0.015f * DC.dealDamage); // Only works right if game is running 60fps
+            armorBarWidth.x = (1.5f / PB.maxArmor * PB.armor); // Maybe only works right if game is running 60fps
+            transform.localScale = armorBarWidth;
+        }
+
+        if (PB.armor == 0)
+        {
+            armorBarWidth = transform.localScale;
+            armorBarWidth.x = 0f;
             transform.localScale = armorBarWidth;
         }
     }
