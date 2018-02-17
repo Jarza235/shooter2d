@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerBehaviour : MonoBehaviour {
 
-    private float speed = 0.2f;
-
     public int health;  // Player's current health.
     public int maxHealth; // Player's max health.
     public Text currentHealth; // Show player's current health by text.
@@ -15,72 +13,67 @@ public class PlayerBehaviour : MonoBehaviour {
     public int maxArmor; // Player's max armor.
     public Text currentArmor; // Show current armor by text
 
-    //public bool noRotationAnimation;
-    //public bool yesRotationAnimation;
+	public GameObject HandLeft;
+	public GameObject HandRight;
+	public GameObject LegLeft;
+	public GameObject LegRight;
 
     [HideInInspector] public bool damageTrigger; // True if player is currently losing health.
 
     public GunController theGun;
-
-
-    /// <summary>
-    /// Rotation animation
-    /// </summary>
-
     public float velocity = 5;
     public float turnSpeed = 10;
 
-    Vector2 input;
-    float angle;
+	private float speed = 0.2f;
+    private Vector2 input;
+    private float angle;
+    private Quaternion targetRotation;
+	private float armRotationSpeed = 2.5f;
+	private float timer = 0.0f;
 
-    Quaternion targetRotation;
+	private Rigidbody rb;
+	private float movementForce = 10f;
+	private float characterRotationSpeed = 3f;
+	private float maxSpeed = 5f;
 
-    /// <summary>
-    /// Input is based on Horizontal and Vertical keys
-    /// </summary>
+	// Use this for initialization
+	void Start ()
+	{
+		health = maxHealth; // Player starts with full health.
+		armor = maxArmor; // Player starts with full armor.
+		rb = GetComponent<Rigidbody>();
+	}
+
     void GetInput()
     {
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
     }
-
-    /// <summary>
-    /// Calculates player's direction
-    /// </summary>
+		
     void CalculateDirection()
     {
-        angle = Mathf.Atan2(input.x, input.y);
-        angle = Mathf.Rad2Deg * angle;
+		angle = Mathf.Atan2(input.x , input.y);
+        angle *= Mathf.Rad2Deg;
     }
 
-    /// <summary>
-    /// Player's smooth rotation
-    /// </summary>
     void Rotate()
     {
-        targetRotation = Quaternion.Euler(90, angle, 90);
+		targetRotation = Quaternion.Euler(0f, angle - 90f, 0f);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
     }
-
-    /// <summary>
-    /// Player only moves along its right axis
-    /// </summary>
+		
     void Move()
     {
-        transform.position += transform.right * velocity * Time.deltaTime;
+		if(rb.velocity.magnitude < maxSpeed) {
+			rb.AddForce(transform.right * movementForce);
+		}
     }
 
-    
-    
-
-    // Use this for initialization
-    void Start ()
-    {
-        health = maxHealth; // Player starts with full health.
-        armor = maxArmor; // Player starts with full armor.
+	void FixedUpdate () {
+		AnimateWalk();
+		timer += Time.fixedDeltaTime;
 	}
-	
-	// Update is called once per frame
+
 	void Update ()
     {
         if(health > 0) // Player can't move or shoot if he's dead
@@ -100,8 +93,7 @@ public class PlayerBehaviour : MonoBehaviour {
                 {
                     armor--;
                 }
-
-                if (armor <= 0 && health > 0)
+                else if (health > 0)
                 {
                     health--;
                 }
@@ -109,76 +101,31 @@ public class PlayerBehaviour : MonoBehaviour {
 
             GetInput();
 
-            if (Mathf.Abs(input.x) < 1 && Mathf.Abs(input.y) < 1) return;
-            {
-                CalculateDirection();
-                Rotate();
-                Move();
-            }
-
-            /*if (noRotationAnimation)
-            {
-                // Move player with WASD
-                if (Input.GetKey(KeyCode.W))
-                {
-                    //transform.position = new Vector3(transform.position.x, transform.position.y + speed, transform.position.z);
-                    transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + speed);
-                    transform.rotation = Quaternion.Euler(90.0f, 270.0f, 0.0f); // x,y,z
-                }
-                if (Input.GetKey(KeyCode.S))
-                {
-                    //transform.position = new Vector3(transform.position.x, transform.position.y - speed, transform.position.z);
-                    transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - speed);
-                    transform.rotation = Quaternion.Euler(90.0f, 90.0f, 0.0f);
-                }
-                if (Input.GetKey(KeyCode.D))
-                {
-                    transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
-                    transform.rotation = Quaternion.Euler(90.0f, 0.0f, 0.0f);
-
-                    if (Input.GetKey(KeyCode.S))
-                    {
-                        //transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
-                        transform.rotation = Quaternion.Euler(90.0f, 45.0f, 0.0f);
-                    }
-                    if (Input.GetKey(KeyCode.W))
-                    {
-                        //transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
-                        transform.rotation = Quaternion.Euler(90.0f, 315.0f, 0.0f);
-                    }
-                }
-                if (Input.GetKey(KeyCode.A))
-                {
-                    transform.position = new Vector3(transform.position.x - speed, transform.position.y, transform.position.z);
-                    transform.rotation = Quaternion.Euler(90.0f, 180.0f, 0.0f);
-
-                    if (Input.GetKey(KeyCode.S))
-                    {
-                        //transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
-                        transform.rotation = Quaternion.Euler(90.0f, 135.0f, 0.0f);
-                    }
-                    if (Input.GetKey(KeyCode.W))
-                    {
-                        //transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
-                        transform.rotation = Quaternion.Euler(90.0f, 225.0f, 0.0f);
-                    }
-                }
-            }*/
-
-            /*if (yesRotationAnimation)
-            {
-                GetInput();
-
-                if (Mathf.Abs(input.x) < 1 && Mathf.Abs(input.y) < 1) return;
-                {
-                    CalculateDirection();
-                    Rotate();
-                    Move();
-                }
-            }*/
+			if (Mathf.Abs(input.x) < 1 && Mathf.Abs(input.y) < 1) {
+				// Do nothing
+			}
+			else {
+				CalculateDirection();
+				Rotate();
+				Move();
+			}	
         }
 
-        currentHealth.text = ("Life: " + health); // Shows player's current health.
-        currentArmor.text = ("Armor: " + armor); // Shows player's current armor.
+        currentHealth.text = "Life: " + health; // Shows player's current health.
+        currentArmor.text = "Armor: " + armor;  // Shows player's current armor.
     }
+
+	private void AnimateWalk() {
+		if(timer < 0.2f) {
+			HandLeft.transform.Rotate(Vector3.up * armRotationSpeed);
+			HandRight.transform.Rotate(Vector3.up * -armRotationSpeed);
+
+			LegLeft.transform.Rotate(Vector3.up * -armRotationSpeed);
+			LegRight.transform.Rotate(Vector3.up * armRotationSpeed);
+		}
+		else {
+			armRotationSpeed *= -1f;
+			timer = -0.2f;
+		}
+	}
 }

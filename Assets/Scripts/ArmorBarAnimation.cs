@@ -11,7 +11,7 @@ public class ArmorBarAnimation : MonoBehaviour
 
     void Start()
     {
-        PB = GameObject.Find("Player").GetComponent<PlayerBehaviour>();
+        PB = GameObject.Find("Player3D").GetComponent<PlayerBehaviour>();
         DC = GameObject.Find("DamageCube").GetComponent<DamageCube>();
     }
 

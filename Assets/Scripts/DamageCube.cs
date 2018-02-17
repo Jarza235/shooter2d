@@ -10,7 +10,7 @@ public class DamageCube : MonoBehaviour
 
     void Start ()
     {
-        PB = GameObject.Find("Player").GetComponent<PlayerBehaviour>();
+        PB = GameObject.Find("Player3D").GetComponent<PlayerBehaviour>();
     }
 	
 	void Update ()

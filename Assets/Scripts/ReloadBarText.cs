@@ -12,7 +12,7 @@ public class ReloadBarText : MonoBehaviour
     void Start ()
     {
         GC = GameObject.Find("Gun").GetComponent<GunController>();
-        PB = GameObject.Find("Player").GetComponent<PlayerBehaviour>();
+        PB = GameObject.Find("Player3D").GetComponent<PlayerBehaviour>();
     }
 	
 	void Update ()
