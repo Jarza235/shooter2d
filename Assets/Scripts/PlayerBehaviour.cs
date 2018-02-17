@@ -15,15 +15,17 @@ public class PlayerBehaviour : MonoBehaviour {
     public int maxArmor; // Player's max armor.
     public Text currentArmor; // Show current armor by text
 
-    public bool noRotationAnimation;
-    public bool yesRotationAnimation;
+    //public bool noRotationAnimation;
+    //public bool yesRotationAnimation;
 
     [HideInInspector] public bool damageTrigger; // True if player is currently losing health.
 
     public GunController theGun;
 
-    
-    // yesRotationAnimation [kaikki alapuolella]
+
+    /// <summary>
+    /// Rotation animation
+    /// </summary>
 
     public float velocity = 5;
     public float turnSpeed = 10;
@@ -33,31 +35,42 @@ public class PlayerBehaviour : MonoBehaviour {
 
     Quaternion targetRotation;
 
+    /// <summary>
+    /// Input is based on Horizontal and Vertical keys
+    /// </summary>
     void GetInput()
     {
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
     }
 
+    /// <summary>
+    /// Calculates player's direction
+    /// </summary>
     void CalculateDirection()
     {
         angle = Mathf.Atan2(input.x, input.y);
         angle = Mathf.Rad2Deg * angle;
-        // Kamera ei messissä
     }
 
+    /// <summary>
+    /// Player's smooth rotation
+    /// </summary>
     void Rotate()
     {
         targetRotation = Quaternion.Euler(90, angle, 90);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
     }
 
+    /// <summary>
+    /// Player only moves along its right axis
+    /// </summary>
     void Move()
     {
         transform.position += transform.right * velocity * Time.deltaTime;
     }
 
-    // yesRotationAnimation [kaikki yläpuolella]
+    
     
 
     // Use this for initialization
@@ -94,7 +107,16 @@ public class PlayerBehaviour : MonoBehaviour {
                 }
             }
 
-            if (noRotationAnimation)
+            GetInput();
+
+            if (Mathf.Abs(input.x) < 1 && Mathf.Abs(input.y) < 1) return;
+            {
+                CalculateDirection();
+                Rotate();
+                Move();
+            }
+
+            /*if (noRotationAnimation)
             {
                 // Move player with WASD
                 if (Input.GetKey(KeyCode.W))
@@ -141,9 +163,9 @@ public class PlayerBehaviour : MonoBehaviour {
                         transform.rotation = Quaternion.Euler(90.0f, 225.0f, 0.0f);
                     }
                 }
-            }
+            }*/
 
-            if (yesRotationAnimation)
+            /*if (yesRotationAnimation)
             {
                 GetInput();
 
@@ -153,7 +175,7 @@ public class PlayerBehaviour : MonoBehaviour {
                     Rotate();
                     Move();
                 }
-            }
+            }*/
         }
 
         currentHealth.text = ("Life: " + health); // Shows player's current health.
