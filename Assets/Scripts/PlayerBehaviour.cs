@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerBehaviour : MonoBehaviour {
 
-    public int health;  // Player's current health.
+    public float health;  // Player's current health.
     public int maxHealth; // Player's max health.
     public Text currentHealth; // Show player's current health by text.
 
@@ -40,7 +40,7 @@ public class PlayerBehaviour : MonoBehaviour {
 	void Start ()
 	{
 		health = maxHealth; // Player starts with full health.
-		armor = maxArmor; // Player starts with full armor.
+		armor = 0; // Player starts with 0 armor.
 		rb = GetComponent<Rigidbody>();
 	}
 

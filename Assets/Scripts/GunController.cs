@@ -14,8 +14,9 @@ public class GunController : MonoBehaviour {
     private float shotCounter;
 
     // Bullet spread 
-    public float BulletSpread; // Random spread in angles, e.g. 5 = -5 degrees .. +5 degrees
+    public float BulletSpreadAngle; // Random spread in angles, e.g. 5 = -5 degrees .. +5 degrees
     private float spreadZ;
+    private float spreadY;
 
     public int maxAmmo; // How many bullets a magazine has
     private int currentAmmo; // How many bullets you have left from a magazine
@@ -44,8 +45,9 @@ public class GunController : MonoBehaviour {
             {
                 shotCounter = timeBetweenShots;
                 BulletController newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as BulletController;
-                spreadZ = Random.Range(-BulletSpread, BulletSpread); // Declares unique spread to every bullet
-                newBullet.transform.Rotate(0, 0, spreadZ); // Spread in action
+                spreadY = Random.Range(-BulletSpreadAngle, BulletSpreadAngle); // Declares unique Y-angle (up-down) spread to every bullet
+                spreadZ = Random.Range(-BulletSpreadAngle, BulletSpreadAngle); // Declares unique Z-angle (left-right) spread to every bullet
+                newBullet.transform.Rotate(0, spreadY, spreadZ); // Spread in action
                 newBullet.bulletSpeed = bulletSpeed;
                 currentAmmo--; // Every bullet shot decreases one ammo from the magazine
             }

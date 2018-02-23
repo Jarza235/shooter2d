@@ -17,4 +17,9 @@ public class BulletController : MonoBehaviour {
 
         Object.Destroy(gameObject, 1.0f); // Destroys bullet after 1 sec
     }
+
+    private void OnCollisionEnter(Collision bulletCollision)
+    {
+        Destroy(gameObject);
+    }
 }
