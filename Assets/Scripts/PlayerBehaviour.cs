@@ -16,46 +16,21 @@ public class PlayerBehaviour : HumanBehaviour {
     [HideInInspector] public bool damageTrigger; // True if player is currently losing health.
 
     public GunController theGun;
-    public float velocity = 5;
-    public float turnSpeed = 10;
-
-	private float speed = 0.2f;
-    private Vector2 input;
-    private float angle;
-    private Quaternion targetRotation;
 
 
 	// Use this for initialization
-	void Start ()
+	protected override void Start ()
 	{
+		base.Start();
+
 		health = maxHealth; // Player starts with full health.
 		armor = 0; // Player starts with 0 armor.
-		rb = GetComponent<Rigidbody>();
 	}
 
     void GetInput()
     {
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
-    }
-		
-    void CalculateDirection()
-    {
-		angle = Mathf.Atan2(input.x , input.y);
-        angle *= Mathf.Rad2Deg;
-    }
-
-    void Rotate()
-    {
-		targetRotation = Quaternion.Euler(0f, angle - 90f, 0f);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
-    }
-		
-    void Move()
-    {
-		if(rb.velocity.magnitude < maxSpeed) {
-			rb.AddForce(transform.right * movementForce);
-		}
     }
 		
 
