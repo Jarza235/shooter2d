@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33545165384793922}
   - component: {fileID: 65573963184046910}
   - component: {fileID: 23661017207247410}
+  - component: {fileID: 114605268934289156}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -95,3 +96,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114605268934289156
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1868293780186650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c040a37e52ca72746b2f9039757653d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFiring: 0
+  bullet: {fileID: 0}
+  bulletSpeed: 0
+  timeBetweenShots: 0
+  BulletSpreadAngle: 0
+  maxAmmo: 0
+  reloadTime: 0
+  isReloading: 0
+  firePoint: {fileID: 0}

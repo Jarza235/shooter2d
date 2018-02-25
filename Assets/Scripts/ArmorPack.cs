@@ -13,10 +13,10 @@ public class ArmorPack : MonoBehaviour
     }
 	
 	
-	void Update ()
+	/*void Update ()
     {
         
-    }
+    }*/
 
     private void OnCollisionEnter(Collision collideArmorPack)
     {

@@ -5,12 +5,12 @@ using UnityEngine;
 public class HealthPack : MonoBehaviour
 {
     private PlayerBehaviour PB;
+    public Renderer healthPackRenderer;
+
     public bool instant20;
     public bool overTime40;
 
-    private bool healOverTime;
-
-    public Renderer healthPackRenderer;
+    private bool healOverTimeActive;
 
     void Start ()
     {
@@ -18,22 +18,10 @@ public class HealthPack : MonoBehaviour
         healthPackRenderer = GetComponent<Renderer>();
     }
 	
-	
-	void Update ()
+	/*void Update ()
     {
-        if (healOverTime)
-        {
-            if(PB.health < 100)
-            {
-                PB.health += 10f * Time.deltaTime;
-                
-            }
-            if (PB.health > 100)
-            {
-                PB.health = 100;
-            }
-        }
-    }
+        
+    }*/
 
     private void OnCollisionEnter(Collision collideHealthPack)
     {
@@ -47,18 +35,29 @@ public class HealthPack : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (overTime40 && collideHealthPack.gameObject.tag == "Player" && PB.health < 100)
+        if (!healOverTimeActive && overTime40 && collideHealthPack.gameObject.tag == "Player" && PB.health < 100)
         {
-            StartCoroutine(HealOverTimeTimer());
             healthPackRenderer.enabled = false;
+            StartCoroutine(HealOverTime());
         }
     }
 
-    IEnumerator HealOverTimeTimer() // .
+    // Heal over time
+    public IEnumerator HealOverTime(float healSpeed = 0.02f, int healCount = 20, float healAmount = 40)
     {
-        healOverTime = true;
-        yield return new WaitForSeconds(5);
-        healOverTime = false;
+        healOverTimeActive = true;
+        int currentHealCount = 0;
+        while (currentHealCount < healCount && PB.health < 100)
+        {
+            PB.health += (healAmount / healCount);
+            yield return new WaitForSeconds(healSpeed);
+            currentHealCount++;
+            if (PB.health > 100)
+            {
+                PB.health = 100;
+            }
+        }
+        healOverTimeActive = false;
         Destroy(gameObject);
     }
 }

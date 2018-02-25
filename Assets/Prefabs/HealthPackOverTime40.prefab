@@ -123,6 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8db64defa11b3554599fb6c155c53e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthPackRenderer: {fileID: 0}
   instant20: 0
   overTime40: 1
-  healthPackRenderer: {fileID: 0}

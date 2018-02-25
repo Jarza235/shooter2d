@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224084472955244502}
   - component: {fileID: 222114570452494084}
   - component: {fileID: 114645508653599844}
+  - component: {fileID: 114775865802728456}
   m_Layer: 5
   m_Name: DeathText
   m_TagString: Untagged
@@ -40,7 +41,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.9191176, g: 0.898843, b: 0.898843, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -63,6 +64,18 @@ MonoBehaviour:
   m_Text: 'No Chicken For Dinner Tonight Buddy...
 
     --- Press R To Reset ---'
+--- !u!114 &114775865802728456
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1542711163059986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0ee1dc13ed03c4b8630c91a0fbd731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathText: {fileID: 0}
 --- !u!222 &222114570452494084
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -84,6 +97,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -150, y: 0}
+  m_AnchoredPosition: {x: -452, y: 110}
   m_SizeDelta: {x: 1000, y: 300}
   m_Pivot: {x: 0, y: 0.5}

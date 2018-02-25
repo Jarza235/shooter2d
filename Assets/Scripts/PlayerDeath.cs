@@ -11,10 +11,9 @@ public class PlayerDeath : MonoBehaviour
 
     void Start()
     {
-        PB = GameObject.Find("Player").GetComponent<PlayerBehaviour>();
+        PB = GameObject.Find("Player3D").GetComponent<PlayerBehaviour>();
         GC = GameObject.Find("Gun").GetComponent<GunController>();
     }
-
 
     void Update()
     {
