@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e0ee1dc13ed03c4b8630c91a0fbd731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathText: {fileID: 0}
+  deathText: {fileID: 114645508653599844}
 --- !u!222 &222114570452494084
 CanvasRenderer:
   m_ObjectHideFlags: 1
