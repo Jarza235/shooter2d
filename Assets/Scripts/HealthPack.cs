@@ -11,7 +11,7 @@ public class HealthPack : MonoBehaviour
     public bool instant20;
     public bool overTime40;
 
-    private bool healOverTimeActive;
+    public bool healOverTimeActive;
 
     void Start ()
     {

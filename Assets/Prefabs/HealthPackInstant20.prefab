@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1250879071796216}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 399, y: 225.9, z: 0}
+  m_LocalPosition: {x: 135.22849, y: 21.018475, z: 17.440325}
   m_LocalScale: {x: 1, y: 0.03, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -123,5 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8db64defa11b3554599fb6c155c53e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthPackRenderer: {fileID: 0}
   instant20: 1
   overTime40: 0
+  healOverTimeActive: 0

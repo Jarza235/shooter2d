@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 114196281111542826}
   m_Layer: 0
   m_Name: Player3D
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -789,20 +789,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3081db7750fbe2499ddfc903ef8839c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HandLeft: {fileID: 1091758035571710}
+  HandRight: {fileID: 1613713318402120}
+  LegLeft: {fileID: 1005777385458932}
+  LegRight: {fileID: 1668549945023978}
   health: 0
   maxHealth: 100
   currentHealth: {fileID: 0}
   armor: 0
   maxArmor: 100
   currentArmor: {fileID: 0}
-  HandLeft: {fileID: 1091758035571710}
-  HandRight: {fileID: 1613713318402120}
-  LegLeft: {fileID: 1005777385458932}
-  LegRight: {fileID: 1668549945023978}
   damageTrigger: 0
   theGun: {fileID: 114916955225651014}
-  velocity: 5
-  turnSpeed: 10
 --- !u!114 &114916955225651014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -818,7 +816,7 @@ MonoBehaviour:
   bullet: {fileID: 114077510551213452, guid: 4520d36a425172f489e482e95843fe22, type: 2}
   bulletSpeed: 100
   timeBetweenShots: 0.05
-  BulletSpread: 5
+  BulletSpreadAngle: 0
   maxAmmo: 30
   reloadTime: 1
   isReloading: 0
