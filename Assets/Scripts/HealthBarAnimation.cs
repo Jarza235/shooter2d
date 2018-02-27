@@ -14,6 +14,7 @@ public class HealthBarAnimation : MonoBehaviour
     public bool healthBarRegeActive;
 
     public float healthBeforeRege;
+    public float amountRegenerated;
 
     void Start()
     {
@@ -31,10 +32,18 @@ public class HealthBarAnimation : MonoBehaviour
             transform.localScale = healthBarWidth;
         }
 
-        if (healthBarRegeActive && healthBarRege && PB.health > 0)
+        if (healthBarRegeActive && healthBarRege && PB.health > 0) // Health regeneration visual effect
         {
             healthBarWidth = transform.localScale;
-            healthBarWidth.x = (1.5f / PB.maxHealth * (healthBeforeRege + 40));
+            if(healthBeforeRege + amountRegenerated <= PB.maxHealth)
+            {
+                healthBarWidth.x = (1.5f / PB.maxHealth * (healthBeforeRege + amountRegenerated));
+            }
+            if(healthBeforeRege + amountRegenerated > PB.maxHealth)
+            {
+                healthBarWidth.x = 1.5f;
+            }
+            
             transform.localScale = healthBarWidth;
         }
 

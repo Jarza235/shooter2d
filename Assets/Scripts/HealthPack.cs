@@ -41,6 +41,7 @@ public class HealthPack : MonoBehaviour
         {
             healthPackRenderer.enabled = false;
             HBA.healthBeforeRege = PB.health;
+            HBA.amountRegenerated = 40;
             StartCoroutine(HealOverTime());
         }
     }
