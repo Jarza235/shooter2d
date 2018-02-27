@@ -9,6 +9,12 @@ public class HealthBarAnimation : MonoBehaviour
 
     Vector3 healthBarWidth;
 
+    public bool healthBarFull;
+    public bool healthBarRege;
+    public bool healthBarRegeActive;
+
+    public float healthBeforeRege;
+
     void Start()
     {
         PB = GameObject.Find("Player3D").GetComponent<PlayerBehaviour>();
@@ -18,10 +24,24 @@ public class HealthBarAnimation : MonoBehaviour
 
     void Update()
     {
-        if (PB.armor <= 0 && PB.health >= 0)
+        if (healthBarFull && PB.armor <= 0 && PB.health >= 0)
         {
             healthBarWidth = transform.localScale;
-            healthBarWidth.x = (1.5f / PB.maxHealth * PB.health); // Maybe only works right if game is running 60fps
+            healthBarWidth.x = (1.5f / PB.maxHealth * PB.health);
+            transform.localScale = healthBarWidth;
+        }
+
+        if (healthBarRegeActive && healthBarRege && PB.health > 0)
+        {
+            healthBarWidth = transform.localScale;
+            healthBarWidth.x = (1.5f / PB.maxHealth * (healthBeforeRege + 40));
+            transform.localScale = healthBarWidth;
+        }
+
+        if (!healthBarRegeActive && healthBarRege && PB.health > 0)
+        {
+            healthBarWidth = transform.localScale;
+            healthBarWidth.x = 0f;
             transform.localScale = healthBarWidth;
         }
     }

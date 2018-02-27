@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 224923242276502470}
   - component: {fileID: 222332063703267366}
   - component: {fileID: 114410922328512992}
-  - component: {fileID: 114528003299196752}
+  - component: {fileID: 114702442906722714}
   m_Layer: 5
-  m_Name: HealthBarFull
+  m_Name: HealthBarRege
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9411765, g: 0.20761243, b: 0.20761243, a: 1}
+  m_Color: {r: 0.86764705, g: 0.45934257, b: 0.45934257, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -56,7 +56,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114528003299196752
+--- !u!114 &114702442906722714
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -67,8 +67,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44bd1a18ad1084d4db859dbd57f99512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBarFull: 1
-  healthBarRege: 0
+  healthBarFull: 0
+  healthBarRege: 1
   healthBarRegeActive: 0
   healthBeforeRege: 0
 --- !u!222 &222332063703267366

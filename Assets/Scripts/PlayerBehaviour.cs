@@ -71,7 +71,7 @@ public class PlayerBehaviour : HumanBehaviour {
 			}	
         }
 
-        currentHealth.text = "Life: " + health; // Shows player's current health.
-        currentArmor.text = "Armor: " + armor;  // Shows player's current armor.
+        currentHealth.text = "Life: " + health.ToString("F0"); // Shows player's current health. Hide decimals.
+        currentArmor.text = "Armor: " + armor.ToString("F0");  // Shows player's current armor. Hide decimals.
     }
 }

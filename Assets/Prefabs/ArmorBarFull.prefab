@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224245973126240750}
   - component: {fileID: 222823590937841950}
   - component: {fileID: 114806725191392818}
+  - component: {fileID: 114469930319465344}
   m_Layer: 5
   m_Name: ArmorBarFull
   m_TagString: Untagged
@@ -28,6 +29,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114469930319465344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1979247994111076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85e6f7faddcee014994ebe16d9b91d12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114806725191392818
 MonoBehaviour:
   m_ObjectHideFlags: 1
