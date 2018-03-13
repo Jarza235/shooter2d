@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class ThrowGrenade : MonoBehaviour
 {
-    public float maxThrowForce;
-    public float throwForce;
+    public float maxThrowForceRight; // Forward
+    public float throwForceRight;
+
+    [HideInInspector]public float maxThrowForceForward; // Up
+    [HideInInspector]public float throwForceForward;
 
     public GameObject grenadePrefab;
 
@@ -19,17 +22,20 @@ public class ThrowGrenade : MonoBehaviour
     {
 		if (Input.GetMouseButton(1))
         {
-            if(throwForce < maxThrowForce)
+            if(throwForceRight < maxThrowForceRight)
             {
-                throwForce += 0.1f;
+                throwForceRight += 0.1f;
+                throwForceForward -= 0.0715f;
             }
         }
 
         if (Input.GetMouseButtonUp(1))
         {
             GrenadeThrow();
-            Debug.Log(throwForce);
-            throwForce = 5f;
+            //Debug.Log(throwForceRight);
+            //Debug.Log(throwForceForward);
+            throwForceRight = 5f;
+            throwForceForward = 0;
         }
     }
 
@@ -37,8 +43,7 @@ public class ThrowGrenade : MonoBehaviour
     {
         GameObject grenade = Instantiate(grenadePrefab, transform.position, transform.rotation);
         Rigidbody rb = grenade.GetComponent<Rigidbody>();
-        rb.AddForce(transform.right * throwForce, ForceMode.VelocityChange);
-        rb.AddForce(transform.forward * -2f, ForceMode.VelocityChange);
+        rb.AddForce(transform.right * throwForceRight + transform.forward * throwForceForward, ForceMode.VelocityChange);
         grenade.transform.Rotate(0f, 0f, 300f);
     }
 }

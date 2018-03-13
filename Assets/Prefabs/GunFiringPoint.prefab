@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4079970649557952}
+  - component: {fileID: 114962067159694046}
   m_Layer: 0
   m_Name: GunFiringPoint
   m_TagString: Untagged
@@ -39,3 +40,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114962067159694046
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1527761474747116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54f341a31eb27d04b9793acf22ec9d9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxThrowForceRight: 12
+  throwForceRight: 5
+  maxThrowForceForward: 0
+  throwForceForward: 0
+  grenadePrefab: {fileID: 1252136767909618, guid: 7ff8762a03b1fff4dacea25e3f4d5b60,
+    type: 2}
