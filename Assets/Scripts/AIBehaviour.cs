@@ -52,4 +52,37 @@ public class AIBehaviour : HumanBehaviour {
 		Rotate();
 		Move();
 	}
+
+    public void DealDamage(float damageAmount)
+    {
+        
+        if (armor > 0)
+        {
+            if (damageAmount > armor)
+            {
+                health -= (damageAmount - armor);
+                armor = 0;
+            }
+
+            else
+            {
+                armor -= damageAmount;
+            }
+        }
+
+        else if (health > 0)
+        {
+            health -= damageAmount;
+        }
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        Debug.Log("Dead");
+    }
 }
