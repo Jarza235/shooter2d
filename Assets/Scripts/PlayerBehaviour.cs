@@ -62,7 +62,7 @@ public class PlayerBehaviour : HumanBehaviour {
             GetInput();
 
 			if (Mathf.Abs(input.x) < 1 && Mathf.Abs(input.y) < 1) {
-				// Do nothing
+                StandStill();
 			}
 			else {
 				CalculateDirection();

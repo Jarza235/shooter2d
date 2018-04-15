@@ -943,8 +943,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f341a31eb27d04b9793acf22ec9d9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxThrowForce: 20
-  throwForce: 5
+  maxThrowForceRight: 12
+  throwForceRight: 5
+  maxThrowForceForward: 0
+  throwForceForward: 0
   grenadePrefab: {fileID: 1252136767909618, guid: 7ff8762a03b1fff4dacea25e3f4d5b60,
     type: 2}
 --- !u!114 &114916955225651014

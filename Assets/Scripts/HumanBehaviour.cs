@@ -16,8 +16,8 @@ public class HumanBehaviour : MonoBehaviour
 	protected Rigidbody rb;
 
 	// Movement
-	protected float movementForce = 10f;
-	protected float characterRotationSpeed = 3f;
+	protected float movementForce = 20f;
+	protected float characterRotationSpeed = 3f; // Useless?
 	protected float maxSpeed = 5f;
 	protected Vector2 input;
 	protected float angle;
@@ -25,7 +25,8 @@ public class HumanBehaviour : MonoBehaviour
 	protected float turnSpeed = 10f;
 
 
-	virtual protected void Start () {
+	virtual protected void Start ()
+    {
 		rb = GetComponent<Rigidbody>();
 	}
 
@@ -43,30 +44,35 @@ public class HumanBehaviour : MonoBehaviour
 
 	virtual protected void Move()
 	{
-		if(rb.velocity.magnitude < maxSpeed) {
-			rb.AddForce(transform.right * movementForce);
-		}
-	}
+        armRotationSpeed = 4.25f;
+        transform.position += transform.right * maxSpeed * Time.deltaTime; //<- Test: Player movement is better, but body is not animated.
+    }
 
-	// Update is called once per frame
-	virtual protected void FixedUpdate () {
+    virtual protected void StandStill()
+    {
+        armRotationSpeed = 0;
+    }
 
-		// Arm rotation speed depends on the player speed. Cap the arm speed to fixed value.
-		armRotationSpeed = Mathf.Min(rb.velocity.magnitude, 2.5f) * 1.7f;
+    // Update is called once per frame
+    virtual protected void FixedUpdate ()
+    {
 		AnimateWalk();
-		armTravelLenghtCounter += armRotationSpeed;
+		armTravelLenghtCounter += armRotationSpeed;        
 	}
 
-	virtual protected void AnimateWalk() {
+    virtual protected void AnimateWalk()
+    {
 		float maxTravelLenght = 30f;
-		if(armTravelLenghtCounter < maxTravelLenght) {
+		if(armTravelLenghtCounter < maxTravelLenght)
+        {
 			HandLeft.transform.Rotate(Vector3.up  * armRotationSpeed * armRotationDirection);
 			HandRight.transform.Rotate(Vector3.up * armRotationSpeed * -armRotationDirection);
 
 			LegLeft.transform.Rotate(Vector3.up  * armRotationSpeed * -armRotationDirection);
 			LegRight.transform.Rotate(Vector3.up * armRotationSpeed * armRotationDirection);
 		}
-		else {
+		else
+        {
 			armRotationDirection *= -1f;
 			armTravelLenghtCounter = -armTravelLenghtCounter;
 		}
