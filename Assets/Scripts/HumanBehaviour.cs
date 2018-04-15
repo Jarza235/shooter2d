@@ -24,11 +24,19 @@ public class HumanBehaviour : MonoBehaviour
 	protected Quaternion targetRotation;
 	protected float turnSpeed = 10f;
 
+    public float health;  // Player's current health.
+    public float maxHealth; // Player's max health.
 
-	virtual protected void Start ()
+    public float armor; // Player's current armor.
+    public float maxArmor; // Player's max armor.
+
+
+    virtual protected void Start ()
     {
 		rb = GetComponent<Rigidbody>();
-	}
+        health = maxHealth; // Player starts with full health.
+        armor = 0; // Player starts with 0 armor.
+    }
 
 	virtual protected void CalculateDirection()
 	{

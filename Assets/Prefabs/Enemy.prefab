@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 114937260831327674}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -793,9 +793,10 @@ MonoBehaviour:
   HandRight: {fileID: 1797519568694786}
   LegLeft: {fileID: 1460292491210158}
   LegRight: {fileID: 1292916041917540}
-  theGun: {fileID: 114957117558220476}
-  velocity: 5
-  turnSpeed: 10
+  health: 0
+  maxHealth: 100
+  armor: 0
+  maxArmor: 100
 --- !u!114 &114957117558220476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -811,7 +812,7 @@ MonoBehaviour:
   bullet: {fileID: 114077510551213452, guid: 4520d36a425172f489e482e95843fe22, type: 2}
   bulletSpeed: 100
   timeBetweenShots: 0.05
-  BulletSpread: 5
+  BulletSpreadAngle: 0
   maxAmmo: 30
   reloadTime: 1
   isReloading: 0

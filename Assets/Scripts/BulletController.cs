@@ -20,6 +20,11 @@ public class BulletController : MonoBehaviour {
 
     private void OnCollisionEnter(Collision bulletCollision)
     {
-        Destroy(gameObject);
+        if (bulletCollision.collider.tag.Equals("Enemy"))
+        {
+            Debug.Log(bulletCollision.collider.GetComponent<AIBehaviour>().health);
+            bulletCollision.collider.GetComponent<AIBehaviour>().DealDamage(5);
+        }
+       Destroy(gameObject);
     }
 }

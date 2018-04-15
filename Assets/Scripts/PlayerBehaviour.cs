@@ -5,12 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerBehaviour : HumanBehaviour {
 
-    public float health;  // Player's current health.
-    public int maxHealth; // Player's max health.
     public Text currentHealth; // Show player's current health by text.
-
-    public int armor; // Player's current armor.
-    public int maxArmor; // Player's max armor.
     public Text currentArmor; // Show current armor by text
 
     [HideInInspector] public bool damageTrigger; // True if player is currently losing health.
@@ -22,9 +17,6 @@ public class PlayerBehaviour : HumanBehaviour {
 	protected override void Start ()
 	{
 		base.Start();
-
-		health = maxHealth; // Player starts with full health.
-		armor = 0; // Player starts with 0 armor.
 	}
 
     void GetInput()
