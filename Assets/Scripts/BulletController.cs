@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour {
 
-    public float bulletSpeed; // Speed controlled by GunController   
+    public float bulletSpeed; // Speed controlled by GunController
+    public float bulletDamage;
 
     void Start ()
     {
@@ -22,8 +23,8 @@ public class BulletController : MonoBehaviour {
     {
         if (bulletCollision.collider.tag.Equals("Enemy"))
         {
+            bulletCollision.collider.GetComponent<AIBehaviour>().DealDamage(bulletDamage);
             Debug.Log(bulletCollision.collider.GetComponent<AIBehaviour>().health);
-            bulletCollision.collider.GetComponent<AIBehaviour>().DealDamage(5);
         }
        Destroy(gameObject);
     }

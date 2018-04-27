@@ -46,4 +46,5 @@ public class ThrowGrenade : MonoBehaviour
         rb.AddForce(transform.right * throwForceRight + transform.forward * throwForceForward, ForceMode.VelocityChange);
         grenade.transform.Rotate(0f, 0f, 300f);
     }
+    
 }

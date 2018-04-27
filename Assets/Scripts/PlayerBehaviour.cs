@@ -30,14 +30,14 @@ public class PlayerBehaviour : HumanBehaviour {
     {
         if(health > 0) // Player can't move or shoot if he's dead
         {
-            if (Input.GetMouseButtonDown(0))
+            /*if (Input.GetMouseButtonDown(0)) // Siirretty gun controlleriin
             {
                 theGun.isFiring = true;
             }
             if (Input.GetMouseButtonUp(0))
             {
                 theGun.isFiring = false;
-            }
+            }*/
 
             if (Input.GetKey(KeyCode.K)) // Inflict damage by pressing K
             {
@@ -53,10 +53,12 @@ public class PlayerBehaviour : HumanBehaviour {
 
             GetInput();
 
-			if (Mathf.Abs(input.x) < 1 && Mathf.Abs(input.y) < 1) {
+			if (Mathf.Abs(input.x) < 1 && Mathf.Abs(input.y) < 1)
+            {
                 StandStill();
 			}
-			else {
+			else
+            {
 				CalculateDirection();
 				Rotate();
 				Move();

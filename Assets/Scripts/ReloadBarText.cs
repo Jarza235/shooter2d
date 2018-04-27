@@ -5,24 +5,23 @@ using UnityEngine.UI;
 
 public class ReloadBarText : MonoBehaviour
 {
-    private GunController GC;
     private PlayerBehaviour PB;
     public Text ReloadText;
+    public bool reloadTextActive;
 
     void Start ()
     {
-        GC = GameObject.Find("Gun").GetComponent<GunController>();
         PB = GameObject.Find("Player3D").GetComponent<PlayerBehaviour>();
     }
 	
 	void Update ()
     {
-        if (GC.isReloading && PB.health > 0)
+        if (reloadTextActive && PB.health > 0)
         {
             ReloadText.CrossFadeAlpha(1.0f, 0, false);
         }
 
-        if (!GC.isReloading)
+        if (!reloadTextActive)
         {
             ReloadText.CrossFadeAlpha(0.0f, 0, false);
         }

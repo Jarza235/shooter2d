@@ -5,28 +5,28 @@ using UnityEngine.UI;
 
 public class ReloadBarAnimation : MonoBehaviour
 {
-    private GunController GC;
     private PlayerBehaviour PB;
 
     Vector3 reloadBarWidth;
 
+    public bool animationActive;
+    public float animationLength;
+
     void Start ()
     {
-        GC = GameObject.Find("Gun").GetComponent<GunController>();
         PB = GameObject.Find("Player3D").GetComponent<PlayerBehaviour>();
     }
 	
-	
 	void Update ()
     {
-        if (GC.isReloading && reloadBarWidth.x < 1.5f && PB.health > 0)
+        if (animationActive && reloadBarWidth.x < 1.5f && PB.health > 0)
         {
             reloadBarWidth = transform.localScale;
-            reloadBarWidth.x += (0.025f / GC.reloadTime); // Maybe only works right if game is running 60fps
+            reloadBarWidth.x += (0.025f / animationLength); // Maybe only works right if game is running 60fps
             transform.localScale = reloadBarWidth;
         }
 
-        if (!GC.isReloading)
+        if (!animationActive)
         {
             reloadBarWidth = transform.localScale;
             reloadBarWidth.x = 0f;
