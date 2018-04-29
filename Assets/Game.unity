@@ -834,6 +834,11 @@ Prefab:
       propertyPath: currentArmor
       value: 
       objectReference: {fileID: 1136314244}
+    - target: {fileID: 114196281111542826, guid: c830e9eb2099a4ecfbda0928a4599b82,
+        type: 2}
+      propertyPath: deathText
+      value: 
+      objectReference: {fileID: 1104463233}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c830e9eb2099a4ecfbda0928a4599b82, type: 2}
   m_IsPrefabParent: 0
@@ -847,6 +852,12 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224370547649608982, guid: 43bb9e9236f4d224088f63a3f2bbb58f,
     type: 2}
   m_PrefabInternal: {fileID: 1377614701}
+--- !u!114 &1104463233 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114645508653599844, guid: b5af38a89bcc3e04c82c60d542fdd9d1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1140230056}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &1136314244 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114094970619583654, guid: 5188e06daadd34e4eb80a591504b09e6,
