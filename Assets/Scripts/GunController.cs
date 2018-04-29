@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GunController : MonoBehaviour
 {
-    private PlayerBehaviour PB;
     private ReloadBarAnimation RBA;
     private ReloadBarText RBT;
     private ReloadBarEmpty RBE;
@@ -27,6 +26,8 @@ public class GunController : MonoBehaviour
     private float spreadZ;
     private float spreadY;
 
+	private bool isPlayerAlive = true;
+
     public int maxAmmo; // How many bullets a magazine has
     public int currentAmmo; // How many bullets you have left from a magazine
     public float reloadTime; // How long time it takes to reload the gun
@@ -38,7 +39,6 @@ public class GunController : MonoBehaviour
     {
         currentAmmo = maxAmmo; // Magazine starts with full ammo
         shootAgain = true;
-        PB = GameObject.Find("Player3D").GetComponent<PlayerBehaviour>();
     }
 
     void Awake()
@@ -59,16 +59,19 @@ public class GunController : MonoBehaviour
 
     void Update()
     {
-        if (PB.health > 0) // Player can't move or shoot if he's dead
+		// If player is alive, don't shoot
+		if(!isPlayerAlive) {
+			isFiring = false;
+			return;
+		}
+
+        if (Input.GetMouseButtonDown(0))
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                isFiring = true;
-            }
-            if (Input.GetMouseButtonUp(0))
-            {
-                isFiring = false;
-            }
+            isFiring = true;
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            isFiring = false;
         }
         
         if (assaultRifle && isFiring && !isReloading)
@@ -83,6 +86,10 @@ public class GunController : MonoBehaviour
             PumpShotgun();
         }
     }
+
+	public void SetIsPlayerAlive(bool alive) {
+		isPlayerAlive = alive;
+	}
 
     IEnumerator Reload() // Declares what happens when you are reloading. Player reloads gun to full ammo.
     {

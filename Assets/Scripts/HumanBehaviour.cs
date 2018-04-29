@@ -30,6 +30,8 @@ public class HumanBehaviour : MonoBehaviour
     public float armor; // Player's current armor.
     public float maxArmor; // Player's max armor.
 
+	public GunController theGun;
+
 
     virtual protected void Start ()
     {
@@ -65,7 +67,11 @@ public class HumanBehaviour : MonoBehaviour
     virtual protected void FixedUpdate ()
     {
 		AnimateWalk();
-		armTravelLenghtCounter += armRotationSpeed;        
+		armTravelLenghtCounter += armRotationSpeed;     
+
+		if(health <= 0) {
+			theGun.SetIsPlayerAlive(false);
+		}
 	}
 
     virtual protected void AnimateWalk()

@@ -1091,10 +1091,10 @@ MonoBehaviour:
   maxHealth: 100
   armor: 0
   maxArmor: 100
+  theGun: {fileID: 114576197412966850}
   currentHealth: {fileID: 0}
   currentArmor: {fileID: 0}
   damageTrigger: 0
-  theGun: {fileID: 114576197412966850}
 --- !u!114 &114265088248304810
 MonoBehaviour:
   m_ObjectHideFlags: 1

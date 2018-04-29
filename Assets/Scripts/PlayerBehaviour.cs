@@ -10,8 +10,6 @@ public class PlayerBehaviour : HumanBehaviour {
 
     [HideInInspector] public bool damageTrigger; // True if player is currently losing health.
 
-    public GunController theGun;
-
 
 	// Use this for initialization
 	protected override void Start ()
@@ -30,14 +28,6 @@ public class PlayerBehaviour : HumanBehaviour {
     {
         if(health > 0) // Player can't move or shoot if he's dead
         {
-            /*if (Input.GetMouseButtonDown(0)) // Siirretty gun controlleriin
-            {
-                theGun.isFiring = true;
-            }
-            if (Input.GetMouseButtonUp(0))
-            {
-                theGun.isFiring = false;
-            }*/
 
             if (Input.GetKey(KeyCode.K)) // Inflict damage by pressing K
             {
