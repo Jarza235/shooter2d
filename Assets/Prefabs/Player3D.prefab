@@ -117,7 +117,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4577314297726852}
-  - component: {fileID: 114976035290707298}
   m_Layer: 0
   m_Name: Weapons
   m_TagString: Untagged
@@ -1092,6 +1091,7 @@ MonoBehaviour:
   armor: 0
   maxArmor: 100
   theGun: {fileID: 114576197412966850}
+  selectedWeapon: 0
   currentHealth: {fileID: 0}
   currentArmor: {fileID: 0}
   damageTrigger: 0
@@ -1162,18 +1162,6 @@ MonoBehaviour:
   reloadTime: 2
   isReloading: 0
   firePoint: {fileID: 4160756681654160}
---- !u!114 &114976035290707298
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1364011054773436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9a2857e0d44f5145a414e58c8bbfa78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedWeapon: 0
 --- !u!136 &136635545869961714
 CapsuleCollider:
   m_ObjectHideFlags: 1

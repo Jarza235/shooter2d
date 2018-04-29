@@ -31,6 +31,7 @@ public class HumanBehaviour : MonoBehaviour
     public float maxArmor; // Player's max armor.
 
 	public GunController theGun;
+	public int selectedWeapon = 0;
 
 
     virtual protected void Start ()
@@ -89,6 +90,29 @@ public class HumanBehaviour : MonoBehaviour
         {
 			armRotationDirection *= -1f;
 			armTravelLenghtCounter = -armTravelLenghtCounter;
+		}
+	}
+
+	virtual protected void SwitchWeapon() {
+		
+	}
+
+	protected void SelectWeapon() {
+		int i = 0;
+		foreach (Transform weapon in transform.Find("Weapons"))
+		{
+			if (i == selectedWeapon)
+			{
+				weapon.gameObject.SetActive(true);
+				theGun = weapon.GetComponent<GunController>();
+			}
+
+			else
+			{
+				weapon.gameObject.SetActive(false);
+			}
+
+			i++;
 		}
 	}
 

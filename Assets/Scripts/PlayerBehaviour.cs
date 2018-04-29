@@ -24,6 +24,47 @@ public class PlayerBehaviour : HumanBehaviour {
     }
 		
 
+	protected override void SwitchWeapon() {
+		int previousSelectedWeapon = selectedWeapon;
+
+		if (Input.GetAxis("Mouse ScrollWheel") > 0f) // Switch weapon with mouse scroll wheel.
+		{
+			if (selectedWeapon >= transform.Find("Weapons").childCount - 1)
+			{
+				selectedWeapon = 0;
+			}
+			else
+			{
+				selectedWeapon++;
+			}
+		}
+		if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+		{
+			if (selectedWeapon <= 0)
+			{
+				selectedWeapon = transform.Find("Weapons").childCount - 1;
+			}
+			else
+			{
+				selectedWeapon--;
+			}
+		}
+
+		if (Input.GetKeyDown(KeyCode.Alpha1)) // Switch weapon with numbers.
+		{
+			selectedWeapon = 0;
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha2) && transform.Find("Weapons").childCount >= 2)
+		{
+			selectedWeapon = 1;
+		}
+
+		if (previousSelectedWeapon != selectedWeapon)
+		{
+			SelectWeapon();
+		}
+	}
+
 	void Update ()
     {
         if(health > 0) // Player can't move or shoot if he's dead
@@ -61,7 +102,9 @@ public class PlayerBehaviour : HumanBehaviour {
 				CalculateDirection();
 				Rotate();
 				Move();
-			}	
+			}
+
+			SwitchWeapon();
         }
 
         currentHealth.text = "Life: " + health.ToString("F0"); // Shows player's current health. Hide decimals.

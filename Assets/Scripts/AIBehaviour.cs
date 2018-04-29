@@ -66,9 +66,18 @@ public class AIBehaviour : HumanBehaviour {
 		else if(shootingTimer > 10f && theGun.isFiring) {
 			theGun.ToggleFire(false);
 			shootingTimer = 0f;
-			Debug.Log("AI stopped shooting");
+			SwitchWeapon();
 		}
 	}
 
+	protected override void SwitchWeapon() {
+		if(selectedWeapon == 0) {
+			selectedWeapon = 1;
+		}
+		else if(selectedWeapon == 1) {
+			selectedWeapon = 0;
+		}
+		SelectWeapon();
+	}
     
 }
