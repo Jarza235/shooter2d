@@ -79,5 +79,9 @@ public class AIBehaviour : HumanBehaviour {
 		}
 		SelectWeapon();
 	}
+
+	protected override void Die() {
+		Destroy(gameObject);
+	}
     
 }

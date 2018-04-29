@@ -94,7 +94,7 @@ public class HumanBehaviour : MonoBehaviour
 	}
 
 	virtual protected void SwitchWeapon() {
-		
+		// Implementation is in PlayerBehaviour and in AIBehaviour
 	}
 
 	protected void SelectWeapon() {
@@ -144,7 +144,7 @@ public class HumanBehaviour : MonoBehaviour
 		}
 	}
 
-	public void Die()
+	virtual protected void Die()
 	{
 		Debug.Log("Dead");
 	}

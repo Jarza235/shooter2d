@@ -7,6 +7,7 @@ public class PlayerBehaviour : HumanBehaviour {
 
     public Text currentHealth; // Show player's current health by text.
     public Text currentArmor; // Show current armor by text
+	public Text deathText;
 
     [HideInInspector] public bool damageTrigger; // True if player is currently losing health.
 
@@ -15,6 +16,8 @@ public class PlayerBehaviour : HumanBehaviour {
 	protected override void Start ()
 	{
 		base.Start();
+
+		deathText.CrossFadeAlpha(0.0f, 0, false);
 	}
 
     void GetInput()
@@ -65,6 +68,22 @@ public class PlayerBehaviour : HumanBehaviour {
 		}
 	}
 
+	protected override void Die() {
+		theGun.isFiring = false;
+		theGun.isReloading = false;
+
+		deathText.CrossFadeAlpha(1.0f, 0, false);
+	}
+
+	private void Respawn() {
+		if (Input.GetKey(KeyCode.R))
+		{
+			health = maxHealth;
+			theGun.SetIsPlayerAlive(true);
+			deathText.CrossFadeAlpha(0.0f, 0, false);
+		}
+	}
+
 	void Update ()
     {
         if(health > 0) // Player can't move or shoot if he's dead
@@ -106,8 +125,10 @@ public class PlayerBehaviour : HumanBehaviour {
 
 			SwitchWeapon();
         }
-
+			
         currentHealth.text = "Life: " + health.ToString("F0"); // Shows player's current health. Hide decimals.
         currentArmor.text = "Armor: " + armor.ToString("F0");  // Shows player's current armor. Hide decimals.
+
+		Respawn();
     }
 }

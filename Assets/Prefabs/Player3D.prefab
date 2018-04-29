@@ -1094,6 +1094,7 @@ MonoBehaviour:
   selectedWeapon: 0
   currentHealth: {fileID: 0}
   currentArmor: {fileID: 0}
+  deathText: {fileID: 0}
   damageTrigger: 0
 --- !u!114 &114265088248304810
 MonoBehaviour:
