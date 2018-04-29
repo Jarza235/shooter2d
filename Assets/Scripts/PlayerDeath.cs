@@ -12,7 +12,6 @@ public class PlayerDeath : MonoBehaviour
     void Start()
     {
         PB = GameObject.Find("Player3D").GetComponent<PlayerBehaviour>();
-        GC = GameObject.Find("Gun").GetComponent<GunController>();
     }
 
     void Update()
@@ -20,7 +19,7 @@ public class PlayerDeath : MonoBehaviour
         if (PB.health <= 0)
         {
             PB.theGun.isFiring = false;
-            GC.isReloading = false;
+			PB.theGun.isReloading = false;
 
             if (Input.GetKey(KeyCode.R))
             {

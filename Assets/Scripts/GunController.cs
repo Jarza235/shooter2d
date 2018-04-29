@@ -64,15 +64,6 @@ public class GunController : MonoBehaviour
 			isFiring = false;
 			return;
 		}
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            isFiring = true;
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            isFiring = false;
-        }
         
         if (assaultRifle && isFiring && !isReloading)
         {
@@ -89,6 +80,10 @@ public class GunController : MonoBehaviour
 
 	public void SetIsPlayerAlive(bool alive) {
 		isPlayerAlive = alive;
+	}
+
+	public void ToggleFire(bool toggle) {
+		isFiring = toggle;
 	}
 
     IEnumerator Reload() // Declares what happens when you are reloading. Player reloads gun to full ammo.

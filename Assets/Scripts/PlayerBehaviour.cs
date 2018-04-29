@@ -29,6 +29,15 @@ public class PlayerBehaviour : HumanBehaviour {
         if(health > 0) // Player can't move or shoot if he's dead
         {
 
+			if (Input.GetMouseButtonDown(0))
+			{
+				theGun.ToggleFire(true);
+			}
+			if (Input.GetMouseButtonUp(0))
+			{
+				theGun.ToggleFire(false);
+			}
+
             if (Input.GetKey(KeyCode.K)) // Inflict damage by pressing K
             {
                 if (armor > 0)

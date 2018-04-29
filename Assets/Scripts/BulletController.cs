@@ -21,10 +21,10 @@ public class BulletController : MonoBehaviour {
 
     private void OnCollisionEnter(Collision bulletCollision)
     {
-        if (bulletCollision.collider.tag.Equals("Enemy"))
+		if (bulletCollision.collider.tag.Equals("Enemy") || bulletCollision.collider.tag.Equals("Player"))
         {
-            bulletCollision.collider.GetComponent<AIBehaviour>().DealDamage(bulletDamage);
-            Debug.Log(bulletCollision.collider.GetComponent<AIBehaviour>().health);
+			bulletCollision.collider.GetComponent<HumanBehaviour>().DealDamage(bulletDamage);
+            //Debug.Log(bulletCollision.collider.GetComponent<AIBehaviour>().health);
         }
        Destroy(gameObject);
     }

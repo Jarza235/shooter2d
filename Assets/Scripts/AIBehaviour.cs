@@ -9,6 +9,8 @@ public class AIBehaviour : HumanBehaviour {
 	private float inputXTimer = 3f;
 	private float inputYTimer = 3f;
 
+	private float shootingTimer = 0f;
+
 	void GetInput()
 	{
 		inputXTimer -= Time.deltaTime;
@@ -51,38 +53,22 @@ public class AIBehaviour : HumanBehaviour {
 		CalculateDirection();
 		Rotate();
 		Move();
+		ToggleShooting();
 	}
 
-    public void DealDamage(float damageAmount)
-    {
-        
-        if (armor > 0)
-        {
-            if (damageAmount > armor)
-            {
-                health -= (damageAmount - armor);
-                armor = 0;
-            }
+	void ToggleShooting() {
+		shootingTimer += Time.deltaTime;
 
-            else
-            {
-                armor -= damageAmount;
-            }
-        }
+		if(shootingTimer > 5f && !theGun.isFiring) {
+			theGun.ToggleFire(true);
+			//Debug.Log("AI shooting");
+		}
+		else if(shootingTimer > 10f && theGun.isFiring) {
+			theGun.ToggleFire(false);
+			shootingTimer = 0f;
+			Debug.Log("AI stopped shooting");
+		}
+	}
 
-        else if (health > 0)
-        {
-            health -= damageAmount;
-        }
-
-        if (health <= 0)
-        {
-            Die();
-        }
-    }
-
-    public void Die()
-    {
-        Debug.Log("Dead");
-    }
+    
 }
