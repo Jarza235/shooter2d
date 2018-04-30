@@ -97,7 +97,8 @@ public class HumanBehaviour : MonoBehaviour
 		// Implementation is in PlayerBehaviour and in AIBehaviour
 	}
 
-	protected void SelectWeapon() {
+	public void SelectWeapon() // Muutin tämän publiciksi, jotta LootWeapons futaa. 
+    {
 		int i = 0;
 		foreach (Transform weapon in transform.Find("Weapons"))
 		{

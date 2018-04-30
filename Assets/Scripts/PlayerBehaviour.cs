@@ -9,6 +9,9 @@ public class PlayerBehaviour : HumanBehaviour {
     public Text currentArmor; // Show current armor by text
 	public Text deathText;
 
+    public bool hasWeapon1; // Not implemented yet.
+    public bool hasWeapon2; // Not implemented yet.
+
     [HideInInspector] public bool damageTrigger; // True if player is currently losing health.
 
 
@@ -25,7 +28,6 @@ public class PlayerBehaviour : HumanBehaviour {
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
     }
-		
 
 	protected override void SwitchWeapon() {
 		int previousSelectedWeapon = selectedWeapon;
