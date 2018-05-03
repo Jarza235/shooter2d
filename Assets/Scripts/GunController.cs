@@ -16,6 +16,7 @@ public class GunController : MonoBehaviour
 
     public bool shotgun;
     public bool assaultRifle;
+    public bool pistol;
     
     // Cooldown between shots
     public float timeBetweenShots;
@@ -75,6 +76,12 @@ public class GunController : MonoBehaviour
         {
             bullet.bulletDamage = bulletDamage;
             PumpShotgun();
+        }
+
+        if (pistol && isFiring && !isReloading)
+        {
+            bullet.bulletDamage = bulletDamage;
+            Pistol();
         }
     }
 
@@ -160,6 +167,25 @@ public class GunController : MonoBehaviour
             newBullet7.transform.Rotate(0, spreadY, spreadZ); 
             newBullet7.bulletSpeed = bulletSpeed;
             currentAmmo--; 
+            StartCoroutine(TimeBetweenShots());
+        }
+
+        else if (currentAmmo <= 0) // If magazine has no ammo, reload
+        {
+            StartCoroutine(Reload());
+            return;
+        }
+    }
+
+    void Pistol()
+    {
+        if (shootAgain == true && currentAmmo > 0)
+        {
+            BulletController newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as BulletController;
+            spreadZ = Random.Range(-BulletSpreadAngle, BulletSpreadAngle);
+            newBullet.transform.Rotate(0, spreadY, spreadZ);
+            newBullet.bulletSpeed = bulletSpeed;
+            currentAmmo--;
             StartCoroutine(TimeBetweenShots());
         }
 

@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerBehaviour : HumanBehaviour {
-
+public class PlayerBehaviour : HumanBehaviour
+{ 
     public Text currentHealth; // Show player's current health by text.
     public Text currentArmor; // Show current armor by text
 	public Text deathText;
 
-    public bool hasWeapon1; // Not implemented yet.
-    public bool hasWeapon2; // Not implemented yet.
+    public int carryWeapon1;
+    public int carryWeapon2;
+    public int carryWeaponAmount = 0;
 
     [HideInInspector] public bool damageTrigger; // True if player is currently losing health.
 
@@ -29,10 +30,11 @@ public class PlayerBehaviour : HumanBehaviour {
         input.y = Input.GetAxisRaw("Vertical");
     }
 
-	protected override void SwitchWeapon() {
+	protected override void SwitchWeapon()
+    {
 		int previousSelectedWeapon = selectedWeapon;
 
-		if (Input.GetAxis("Mouse ScrollWheel") > 0f) // Switch weapon with mouse scroll wheel.
+		/*if (Input.GetAxis("Mouse ScrollWheel") > 0f) // Switch weapon with mouse scroll wheel.
 		{
 			if (selectedWeapon >= transform.Find("Weapons").childCount - 1)
 			{
@@ -53,16 +55,18 @@ public class PlayerBehaviour : HumanBehaviour {
 			{
 				selectedWeapon--;
 			}
-		}
+		}*/
 
-		if (Input.GetKeyDown(KeyCode.Alpha1)) // Switch weapon with numbers.
+		if (Input.GetKeyDown(KeyCode.Alpha1) /*&& hasWeapon1*/) // Switch weapon with numbers.
 		{
-			selectedWeapon = 0;
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha2) && transform.Find("Weapons").childCount >= 2)
+            //selectedWeapon = 0;
+            selectedWeapon = carryWeapon1;
+        }
+		if (Input.GetKeyDown(KeyCode.Alpha2) /*&&*/ /*transform.Find("Weapons").childCount >= 2 &&*/ /*hasWeapon2*/)
 		{
-			selectedWeapon = 1;
-		}
+            //selectedWeapon = 1;
+            selectedWeapon = carryWeapon2;
+        }
 
 		if (previousSelectedWeapon != selectedWeapon)
 		{
@@ -70,14 +74,16 @@ public class PlayerBehaviour : HumanBehaviour {
 		}
 	}
 
-	protected override void Die() {
+	protected override void Die()
+    {
 		theGun.isFiring = false;
 		theGun.isReloading = false;
 
 		deathText.CrossFadeAlpha(1.0f, 0, false);
 	}
 
-	private void Respawn() {
+	private void Respawn()
+    {
 		if (Input.GetKey(KeyCode.R))
 		{
 			health = maxHealth;
