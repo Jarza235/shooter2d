@@ -17,6 +17,10 @@ public class LootWeapons : MonoBehaviour
     void Start ()
     {
         PB = GameObject.Find("Player3D").GetComponent<PlayerBehaviour>();
+
+        weapon1 = GameObject.Find("Player3D/Weapons/Gun_AssaultRifle");
+        weapon2 = GameObject.Find("Player3D/Weapons/Gun_PumpShotgun");
+        weapon3 = GameObject.Find("Player3D/Weapons/Gun_Pistol");
     }
 	
 	/*void Update ()
